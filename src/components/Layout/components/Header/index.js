@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faEarthAsia, faEllipsisVertical, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleXmark,
+    faEarthAsia,
+    faEllipsisVertical,
+    faMagnifyingGlass,
+    faSpinner,
+} from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion, faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
@@ -16,16 +22,92 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'zh-TW',
+                    title: '繁體中文',
+                },
+                {
+                    type: 'language',
+                    code: 'zh-CN',
+                    title: '简体中文',
+                },
+                {
+                    type: 'language',
+                    code: 'ja',
+                    title: '日本語',
+                },
+                {
+                    type: 'language',
+                    code: 'ko',
+                    title: '한국어',
+                },
+                {
+                    type: 'language',
+                    code: 'es',
+                    title: 'Español',
+                },
+                {
+                    type: 'language',
+                    code: 'de',
+                    title: 'Deutsch',
+                },
+                {
+                    type: 'language',
+                    code: 'ru',
+
+                    title: 'Русский',
+                },
+                {
+                    type: 'language',
+                    code: 'fr',
+                    title: 'Français',
+                },
+                {
+                    type: 'language',
+                    code: 'pt',
+                    title: 'Português',
+                },
+                {
+                    type: 'language',
+                    code: 'ar',
+                    title: 'العربية',
+                },
+                {
+                    type: 'language',
+                    code: 'hi',
+                    title: 'हिन्दी',
+                },
+                {
+                    type: 'language',
+                    code: 'th',
+                    title: 'ไทย',
+                },
+            ],
+        },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback and help',
-        to: '/feedback'
+        to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard}/>,
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
         title: 'Keyboard shortcuts',
     },
 ];
@@ -38,6 +120,17 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    // Handle logic
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                // Handle change language
+                break;
+            default:
+        }
+        
+    }
 
     return (
         <header className={cx('wrapper')}>
@@ -73,9 +166,7 @@ function Header() {
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
 
-                    <Menu
-                        items={MENU_ITEMS}
-                    >
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
