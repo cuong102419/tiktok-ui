@@ -1,26 +1,18 @@
-import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleXmark,
-    faEllipsisVertical,
-    faMagnifyingGlass,
-    faSignOut,
-    faSpinner,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 import Button from '~/components/Button';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-import AccountItem from '~/components/AccountItem';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
 import { Coin, Gear, Language, MessageIcon, NotificationIcon, UploadIcon, User, Feedback } from '~/components/Icons';
 import Image from '~/components/Image';
+import Search from '../Search';
+
 
 const cx = classNames.bind(styles);
 
@@ -117,15 +109,7 @@ const MENU_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
 
     // Handle logic
     const handleMenuChange = (menuItem) => {
@@ -166,32 +150,8 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <img src={images.logo} alt="Tiktok" />
-                <HeadlessTippy
-                    interactive
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search account and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                        <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+
+                <Search/>
 
                 <div className={cx('actions')}>
                     {currentUser ? (
@@ -218,7 +178,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p9-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/c038a1b97e31a2238992cad9491f83f4~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=68d8598b&x-expires=1750327200&x-signature=OpAEVpi2PV%2FRkBPxN%2BlS%2B8FB9oc%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                                src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d754fe9bcc36baf4a83dcb1eee73dd0f~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=c6e943f9&x-expires=1750226400&x-signature=ftbXiCTpKlNs%2FZTNk%2F7feIo2oGo%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
                                 alt="Nguyen Van A"
                             />
                         ) : (
