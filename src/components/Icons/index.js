@@ -196,7 +196,7 @@ export const Check = ({ className, width = '1.6rem', height = '1.6rem' }) => (
         className={className}
         width={width}
         height={height}
-        font-size="14px"
+        fontSize="14px"
         viewBox="0 0 48 48"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
