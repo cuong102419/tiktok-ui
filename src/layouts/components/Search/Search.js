@@ -5,7 +5,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import * as searchServices from '~/services/searchService';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
-import { Clear, Loading, SearchIcon } from '~/components/Icons';
+import { ClearIcon, LoadingIcon, SearchIcon } from '~/components/Icons';
 import styles from './Search.module.scss';
 import { useDebounce } from '~/hooks';
 
@@ -92,10 +92,10 @@ function Search() {
                     />
                     {!!searchValue && !loading && (
                         <button onClick={handleClear} className={cx('clear')}>
-                            <Clear />
+                            <ClearIcon />
                         </button>
                     )}
-                    {loading && <Loading className={cx('loading')} />}
+                    {loading && <LoadingIcon className={cx('loading')} />}
                     <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon />
                     </button>

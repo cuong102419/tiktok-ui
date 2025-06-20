@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './AccountItem.module.scss';
-import { Check } from '~/components/Icons';
+import { CheckIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
@@ -14,7 +14,7 @@ function AccountItem({ data }) {
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
                     <span>{data.full_name}</span>
-                    {data.tick && <Check className={cx('check')} />}
+                    {data.tick && <CheckIcon className={cx('check')} />}
                 </h4>
                 <span className={cx('username')}>{data.nickname}</span>
             </div>

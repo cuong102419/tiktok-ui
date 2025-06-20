@@ -11,7 +11,7 @@ import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
-import { Coin, Gear, Language, MessageIcon, NotificationIcon, UploadIcon, User, Feedback } from '~/components/Icons';
+import { CoinIcon, GearIcon, LanguageIcon, MessageIcon, NotificationIcon, UploadIcon, UserIcon, FeedbackIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
 
@@ -19,7 +19,7 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
     {
-        icon: <Language />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -99,7 +99,7 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <Feedback />,
+        icon: <FeedbackIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
@@ -124,17 +124,17 @@ function Header() {
 
     const userMenu = [
         {
-            icon: <User />,
+            icon: <UserIcon />,
             title: 'View profile',
             to: '/@ahihi',
         },
         {
-            icon: <Coin />,
+            icon: <CoinIcon />,
             title: 'Get coins',
             to: '/coin',
         },
         {
-            icon: <Gear />,
+            icon: <GearIcon />,
             title: 'Settings',
             to: '/settings',
         },
